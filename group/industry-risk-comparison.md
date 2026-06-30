@@ -16,9 +16,9 @@ Bảng này được dùng để trả lời câu hỏi:
 
 Bảng dưới đây là bản tổng hợp theo risk lens của từng ngành trong đề bài. Với ngành **Giáo dục / AI tutor**, phân tích dựa trên 3 case chính trong repo này:
 
-1. LAUSD Ed AI chatbot / AllHere
-2. GPT-4 math tutor without guardrails
-3. Tutor CoPilot
+1. Khanmigo Math Errors
+2. Texas A&M ChatGPT Grading Scandal
+3. Turnitin AI Detection False Positives
 
 Với các ngành còn lại, bảng dùng risk profile chung theo đặc điểm ngành. Khi các thành viên khác trong bàn share case cụ thể, nhóm có thể cập nhật thêm bằng chứng và số liệu cho từng ngành.
 
@@ -27,7 +27,7 @@ Với các ngành còn lại, bảng dùng risk profile chung theo đặc điể
 | Ngành | Harm dễ gặp nhất | Failure mode hay lặp lại | Layer hay bắt đầu lỗi | Risk profile tổng thể | Vì sao? |
 |---|---|---|---|---|---|
 | HR / tuyển dụng | Opportunity loss, dignity loss, unfair screening, legal exposure | Bias / fairness, proxy discrimination, poor explainability, automation bias | Data, Model, Evaluation, Governance | High | AI trong tuyển dụng ảnh hưởng trực tiếp đến cơ hội việc làm. Nếu model học từ dữ liệu lịch sử có bias, ứng viên có thể bị loại không công bằng. Harm thường không gây hại thể chất nhưng ảnh hưởng mạnh đến cơ hội kinh tế, danh dự và rủi ro pháp lý. |
-| Giáo dục / AI tutor | Learning loss, misinformation, over-reliance, unequal support, privacy loss | Over-reliance, hallucination, answer leakage, grade-level mismatch, privacy leak | UX, Grounding, Safety, Evaluation, Governance | High | AI tutor có thể làm học sinh hoàn thành bài nhanh hơn nhưng không học bền vững. Nếu triển khai trong trường học, hệ thống còn xử lý dữ liệu học sinh, trẻ em và có blast radius lớn. Human review và evaluation theo learning outcome rất quan trọng. |
+| Giáo dục / AI tutor | Learning loss, misinformation, opportunity loss, dignity loss, over-reliance | Hallucination, over-reliance, automation bias, bias/fairness | UX, Grounding, Model, Evaluation, Governance | High | AI trong giáo dục ảnh hưởng tới việc học (lỗi kiến thức) và đánh giá (dương tính giả từ AI detector). Lỗi hệ thống có thể gây ra hàm oan học thuật hoặc hổng kiến thức nghiêm trọng. Human review và tính minh bạch là vô cùng quan trọng. |
 | Y tế / symptom checker / health assistant | Injury, harmful advice, delayed intervention, privacy loss | Harmful advice, hallucination, escalation failure, overconfidence | Safety, Model, Grounding, UX, Governance | Critical | Nếu AI y tế tư vấn sai, người dùng có thể trì hoãn đi khám, dùng sai thuốc hoặc bỏ qua dấu hiệu nguy hiểm. Dữ liệu sức khỏe rất nhạy cảm. Đây là ngành có Severity rất cao và cần escalation sang chuyên gia y tế rõ ràng. |
 | Mobility / autonomous driving | Physical injury, accident, property damage, loss of life | Perception failure, edge-case failure, sensor/model mismatch, fail-safe failure | Sensor, Model, System, Safety, Operations | Critical | Lỗi AI trong autonomous driving có thể gây tai nạn thật ngoài đời. Harm có thể xảy ra trong thời gian rất ngắn và khó đảo ngược. Ngành này cần tiêu chuẩn safety, simulation, real-world testing và fail-safe rất cao trước khi ship. |
 | Media / news / social / political assistant | Misinformation, manipulation, public trust loss, polarization | Hallucination, misinformation amplification, persuasion misuse, weak source grounding | Grounding, Model, UX, Policy, Distribution | High | AI trong media và political assistant có thể ảnh hưởng đến nhận thức cộng đồng ở quy mô lớn. Severity với từng cá nhân có thể không luôn cao, nhưng Scale rất lớn vì nội dung sai có thể lan nhanh và ảnh hưởng đến niềm tin xã hội. |
@@ -135,4 +135,4 @@ Không có ngành nào là “risk thấp” hoàn toàn. Điểm khác nhau là
 - **HR/Giáo dục:** harm về cơ hội, dữ liệu, fairness và phát triển con người.
 - **Content creator:** harm về bản quyền, uy tín, synthetic media và misinformation.
 
-Với ngành **Giáo dục / AI tutor**, bài học quan trọng nhất là AI không nên được đánh giá chỉ bằng khả năng trả lời đúng trong một phiên học. Sản phẩm cần chứng minh rằng học sinh học thật, dữ liệu học sinh được bảo vệ, AI không làm học sinh phụ thuộc, và giáo viên/tutor có vai trò review rõ ràng.
+Với ngành **Giáo dục / AI tutor**, bài học quan trọng nhất là con người không nên quá phụ thuộc (over-reliance) vào phán quyết của AI, đặc biệt là trong chấm điểm hoặc phát hiện gian lận. Sản phẩm cần minh bạch về giới hạn sai số (hallucination), tránh thiên vị (bias), và luôn yêu cầu sự kiểm chứng của con người (human-in-the-loop) để bảo vệ danh dự và cơ hội học tập của học sinh.

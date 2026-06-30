@@ -4,23 +4,24 @@
 
 | Câu hỏi | Low / Medium / High / Critical | Vì sao? |
 |---|---|---|
-| Nếu AI sai, có thể gây hại thể chất không? | **Low → Medium** | Sai trong giáo dục thường không gây thương tích trực tiếp. Tuy nhiên, nếu AI đưa lời khuyên liên quan đến sức khỏe tinh thần, an toàn học đường, hoặc khủng hoảng cá nhân thì rủi ro có thể tăng lên Medium. |
-| AI có ảnh hưởng đến quyết định hệ trọng không? | **High** | AI tutor có thể ảnh hưởng đến lộ trình học, đánh giá năng lực, lựa chọn nội dung luyện tập, cách phụ huynh/giáo viên nhìn nhận năng lực học sinh, và cơ hội được hỗ trợ đúng lúc. |
-| Hệ thống có động tới dữ liệu nhạy cảm không? | **High** | Dữ liệu học sinh thường gồm tuổi, lớp, điểm số, attendance, hành vi học tập, nhu cầu hỗ trợ, đôi khi có dữ liệu gia đình hoặc social-emotional. Đây là dữ liệu nhạy cảm vì liên quan đến trẻ vị thành niên. |
-| Nếu sai, hậu quả có khó đảo ngược không? | **Medium → High** | Một câu trả lời sai có thể sửa được, nhưng learning gap, over-reliance, mất động lực học hoặc placement sai có thể tích lũy qua nhiều tuần/tháng và khó đảo ngược. |
-| Nếu triển khai rộng, blast radius có lớn không? | **High** | Sản phẩm AI tutor thường được triển khai theo trường, district, hoặc nền tảng online. Một lỗi trong model, prompt, dữ liệu hoặc UX có thể ảnh hưởng hàng nghìn đến hàng trăm nghìn học sinh. |
-| Có cần human review hoặc escalation không? | **High** | Cần giáo viên/phụ huynh/counselor tham gia khi AI không chắc, khi có dấu hiệu khủng hoảng, khi gợi ý ảnh hưởng đến lộ trình học, hoặc khi có lỗi dữ liệu cá nhân. |
-| Risk profile tổng thể của ngành | **High** | Không cao về physical injury như y tế/mobility, nhưng cao về học tập dài hạn, quyền riêng tư của trẻ em, công bằng giáo dục, scale, và trust. |
+| Nếu AI sai, có thể gây hại thể chất không? | **Low** | Các lỗi trong giáo dục thường không liên quan đến thương tích vật lý hay đe dọa tính mạng. |
+| AI có ảnh hưởng đến quyết định hệ trọng không? | **High** | Có. Việc sử dụng AI để chấm điểm, phát hiện đạo văn hay định hướng học tập ảnh hưởng trực tiếp đến điểm số, khả năng tốt nghiệp và danh dự học thuật của sinh viên. |
+| Hệ thống có động tới dữ liệu nhạy cảm không? | **High** | Có, hệ thống thu thập dữ liệu học tập cá nhân, bài làm, thói quen học, đôi khi cả thông tin định danh của người học (bao gồm trẻ vị thành niên). |
+| Nếu sai, hậu quả có khó đảo ngược không? | **High** | Một cáo buộc gian lận học thuật sai (dương tính giả từ AI detector) hoặc một lỗ hổng kiến thức do AI tutor dạy sai có thể làm mất thời gian, tiền bạc, và gây tổn thương tinh thần khó phục hồi. |
+| Nếu triển khai rộng, blast radius có lớn không? | **High** | Sản phẩm giáo dục thường được áp dụng cho toàn trường hoặc toàn quận học khu, một lỗi thuật toán có thể ảnh hưởng oan hàng chục ngàn sinh viên. |
+| Có cần human review hoặc escalation không? | **High** | Cực kỳ cần thiết. Bất kỳ quyết định kỷ luật nào dựa trên AI detection, hoặc khi AI tutor không giải quyết được vấn đề học tập, đều cần giáo viên con người xem xét độc lập. |
+| Risk profile tổng thể của ngành | **High** | Rủi ro xoay quanh cơ hội học tập (Opportunity loss), danh dự (Dignity loss) và sự phụ thuộc mù quáng vào công nghệ của cả người học lẫn người dạy. |
 
 ## 2. Pattern rủi ro của ngành Giáo dục / AI tutor
 
-Trong 3 case đã phân tích, rủi ro lặp lại không chỉ nằm ở “AI trả lời sai một câu”. Rủi ro lớn hơn là **AI tạo cảm giác cá nhân hóa và hữu ích**, khiến học sinh, phụ huynh hoặc tutor tin tưởng quá mức trong khi hệ thống vẫn có thể thiếu grounding, thiếu hiểu biết bối cảnh học sinh, hoặc không bảo vệ dữ liệu đủ tốt. Với AI tutor, harm thường tích lũy chậm: học sinh được giải hộ thay vì học thật, giáo viên/tutor nhận gợi ý không đúng trình độ, phụ huynh nhận thông tin sai, hoặc dữ liệu học sinh bị chia sẻ rộng hơn mức cần thiết. Vì vậy, ngành này cần thiết kế theo hướng **tutor-not-solver**, có benchmark theo môn học/độ tuổi, privacy minimization, human-in-the-loop, escalation rõ ràng và pilot nhỏ trước khi rollout diện rộng.
+Qua 3 case study (Khanmigo, Texas A&M, Turnitin), pattern rủi ro lớn nhất trong giáo dục không chỉ là **Hallucination** (AI trả lời sai) mà là **Over-reliance** (sự phụ thuộc thái quá) và **Automation Bias** từ phía người dùng (cả học sinh lẫn giáo viên). 
+1. Khi AI đóng vai trò tutor, học sinh dễ bị hấp thu kiến thức sai lệch nếu AI tính toán sai (Khanmigo). 
+2. Khi AI đóng vai trò công cụ quản lý/đánh giá, giáo viên có xu hướng tin tưởng tuyệt đối vào phán quyết của máy móc, dẫn đến các hình phạt oan sai tàn khốc cho sinh viên (Turnitin, Texas A&M).
+Đặc biệt, hệ thống phát hiện AI (AI detection) hiện nay có **Bias** rõ rệt đối với sinh viên quốc tế, tạo ra sự bất công có hệ thống.
 
 ## 3. Nếu là team sản phẩm, sửa gì trước?
 
-1. **Không để AI “giải hộ” quá dễ:** AI phải ưu tiên gợi ý, hỏi dẫn dắt, kiểm tra hiểu bài, không đưa đáp án ngay.
-2. **Grounding theo nội dung học:** Câu trả lời phải dựa trên SGK/curriculum/lesson objective, có kiểm soát level và vocabulary.
-3. **Privacy by design:** Chỉ gửi dữ liệu tối thiểu cần thiết, de-identify dữ liệu học sinh, log rõ dữ liệu nào đi qua model/vendor nào.
-4. **Human escalation:** Khi AI không chắc, khi có dấu hiệu khủng hoảng, hoặc khi ảnh hưởng đến quyết định học tập quan trọng, phải chuyển cho giáo viên/phụ huynh/counselor.
-5. **Evaluation trước rollout:** Có test set theo từng môn, từng grade, từng dạng lỗi; đo hallucination, hint quality, answer leakage, age appropriateness, privacy leakage.
-6. **Rollout có kiểm soát:** Pilot nhỏ, đo lỗi thật, có kill switch và rollback plan trước khi mở rộng toàn trường/district.
+1. **Minh bạch về giới hạn của AI (UX layer):** Cảnh báo rõ ràng trên giao diện cho cả giáo viên và học sinh rằng AI có thể tính toán sai, và công cụ phát hiện AI không thể được dùng làm bằng chứng duy nhất để kỷ luật.
+2. **Thiết kế "Human-in-the-loop" bắt buộc:** Mọi cảnh báo về đạo văn do AI (Turnitin) phải đi kèm yêu cầu giáo viên thực hiện quy trình phỏng vấn học sinh hoặc kiểm tra lịch sử nháp bài trước khi kết luận.
+3. **Cải thiện Grounding và Guardrails (Model layer):** Đối với AI tutor (Khanmigo), tích hợp các công cụ kiểm tra logic bên ngoài (như math agent) để xác minh kết quả tính toán trước khi xuất ra cho người dùng.
+4. **Kiểm tra công bằng (Fairness Evaluation):** Trước khi phát hành công cụ đánh giá, cần kiểm tra tỷ lệ dương tính giả trên các tập dữ liệu đa dạng (ví dụ: bài viết của người bản xứ vs. người không bản xứ) để tránh thiên vị.
